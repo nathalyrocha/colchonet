@@ -1,0 +1,258 @@
+$header-height: 75px;
+$content-width: 1024px;
+
+$cursive-families: 'Pacifico', cursive;
+$sans-serif-families: 'Poppins', sans-serif;
+
+$error-text-color: #B94A48;
+$success-text-color: #468847;
+
+* {
+  font-family: $sans-serif-families;
+  font-size: 14px;
+}
+
+body {
+  background-color: #f5f5f5;
+}
+
+header {
+  // @include shadow(#ccc, 0, 3px, 6px);
+
+  margin-bottom: 15px;
+
+  #header-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: $content-width;
+    margin: 0 auto;
+  }
+
+  height: $header-height;
+  background: linear-gradient(135deg, #72EDF2 0%, #5151E5 100%);
+
+  h1 {
+    float: left;
+  }
+
+  a {
+    color: rgb(255, 252, 239);
+    font-family: $cursive-families;
+    font-weight: 400;
+    font-size: 2.5em;
+  }
+}
+
+header nav {
+  line-height: $header-height;
+  float: right;
+
+  li {
+    display: inline;
+    background-color: rgba(240, 248, 255, 0.787);
+    padding: 7px 10px;
+
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+
+    &:hover {
+      transition: 1s;
+      background-color: rgb(240, 248, 255);
+    }
+
+    a {
+      font-family: $sans-serif-families;
+      font-size: 14px;
+      font-weight: 500;
+      color: #0D337C;
+    }
+  }
+}
+
+.content {
+  margin: 0 auto;
+  width: 1024px;
+
+  h1 {
+    font-size: 18px;
+    font-weight: 400;
+    color: #1e2736;
+  }
+}
+
+#content {
+  text-align: left;
+  width: $content-width;
+  margin: 0 auto;
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  a, a:visited, a:hover {
+    color: #242;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  ul, form, p {
+    margin: 10px 0;
+  }
+}
+
+#register {
+  text-align: center;
+  margin-top: 72px;
+  margin-bottom: 32px;
+  font-size: 24px;
+  color: #373b41;
+}
+
+#profile {
+  margin-top: 72px;
+  margin-bottom: 32px;
+  font-size: 24px;
+  color: #373b41;
+}
+
+strong {
+  font-size: 18px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 32px;
+
+  label {
+    display: block;
+    margin-top: 16px;
+    color: #727272;
+  }
+
+  input[type=text], input[type=password], textarea {
+    color: #1e2736;
+    font-size: 12px;
+    border: 0;
+    padding: 6px;
+    outline: 0;
+    height: 30px;
+    border-radius: 5px;
+    width: 600px;
+
+    // @include shadow(rgba(0,0,0, 0.1), 0px, 0px, 8px);
+
+    &:focus {
+      border: 1px solid #c9c9c9;
+    }
+  }
+
+  textarea {
+    height: 100px;
+  }
+
+  input[type=submit] {
+    width: 600px;
+    margin-top: 32px;
+    height: 40px;
+    background-color: #5151E5;
+    color: #fff;
+    border: 0;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600; 
+
+    &:hover {
+      transition: 2s;
+      background-color: #72EDF2;
+      color: #444444;
+    }
+  }
+}
+
+.back-button {
+  margin: 72px 0;
+  text-align: center;
+}
+
+.link-button {
+  font-size: 16px;
+  font-weight: 400;
+  color: #727272;
+
+  &:hover {
+    transition: 1s;
+    color: #4e4e4e;
+  }
+}
+
+.field_with_errors {
+  display: inline;
+
+  label {
+    color: $error-text-color;
+    width: 600px;
+    text-align: left;
+  }
+
+  input[type=text], input[type=password], textarea {
+    border: 1px solid rgba(189, 74, 72, 0.5);
+
+    // @include shadow(rgba(189, 74, 72, 0.2), 0px, 0px, 8px);
+
+    &:focus {
+      border: 1px solid rgba(189, 74, 72, 0.6);
+    }
+  }
+}
+
+.error_message {
+  margin-left: 5px;
+  display: inline;
+  color: $error-text-color;
+  width: 600px;
+  text-align: end;
+}
+
+.padded_flash {
+  padding: 10px;
+  margin: 10px 0;
+  font-weight: bold;
+  width: 500px;
+}
+
+#error_explanation {
+  border: 1px solid $error-text-color;
+  color: $error-text-color;
+  background-color: #F2DEDE;
+  text-align: center;
+  margin: 0 auto;
+  width: 600px;
+
+  @extend .padded_flash;
+}
+
+#notice {
+  text-align: center;
+  margin: 0 auto;
+  color: $success-text-color;
+  border: 1px solid $success-text-color;
+  width: 600px;
+
+  @extend .padded_flash;
+
+  background-color: #DFF0D8;
+}
+
+#alert {
+  color: $error-text-color;
+  border: 1px solid $error-text-color;
+
+  @extend .padded_flash;
+
+  background-color: #F2DEDE;
+}
