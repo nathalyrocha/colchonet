@@ -32,14 +32,18 @@
 en:
   hello: "Hello world"
 
-signup_mailer:
-  confirm_email:
-    subject: 'Colcho.net - Confirm your email'
-    title: 'Welcome to Colcho.net!'
-    body: |
-      Welcome to Colcho.net, %{full_name}.
-      Colcho.net is the ideal place for you to rent that spare room in your 
-      home and still meet people from all over the world.
+  signup_mailer:
+    confirm_email:
+      subject: 'Colcho.net - Confirm your email'
+      title: 'Welcome to Colcho.net!'
+      body: |
+        Welcome to Colcho.net, %{full_name}.
+        Colcho.net is the ideal place for you to rent that spare room in your 
+        home and still meet people from all over the world.
 
-    confirm_link_html: 'To start using the site, access the link: %{link}'
-    thanks_html: 'Thanks for registering on the %{link}.'
+      confirm_link_html: 'To start using the site, access the link: %{link}'
+      thanks_html: 'Thanks for registering on the %{link}.'
+
+  users:
+    confirmations:
+      success: Email confirmed successfully. Thanks!
