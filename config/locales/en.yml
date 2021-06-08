@@ -32,6 +32,17 @@
 en:
   hello: "Hello world"
 
+  show:
+    edit: 'Edit Profile'
+    title: 'Profile: %{user_name}'
+    location: 'Location: %{location}'
+    bio: 'Bio: %{bio}'
+
+  user_sessions:
+    new:
+      titile: 'Login'
+      sign_up: 'Sign Up'
+
   signup_mailer:
     confirm_email:
       subject: 'Colcho.net - Confirm your email'
@@ -47,3 +58,30 @@ en:
   users:
     confirmations:
       success: Email confirmed successfully. Thanks!
+
+  room:
+    description: 'Description'
+    location: 'Location'
+    title: 'Title'
+
+  activemodel:
+    attibutes:
+      user_session:
+        email: Email
+        password: Password
+    errors:
+      messages:
+        invalid_login: 'User or password invalid'
+
+  helpers:
+    submit:
+      user_session:
+        create: 'Entrar'
+
+  layout:
+    rooms: Rooms
+    new_room: Register your room
+    signup: Register
+    signin: Login
+    my_profile: My profile
+    signout: Logout
