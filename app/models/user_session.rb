@@ -34,6 +34,10 @@ class UserSession
     end
   end
 
+  def destroy
+    @session[:user_id] = nil
+  end
+
   def store(user)
     @session[:user_id] = user.id
   end
