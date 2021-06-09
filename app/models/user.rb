@@ -3,10 +3,12 @@ class User < ApplicationRecord
   validates :bio, length: { minimum: 30 }, allow_blank: false
   validates :email, format: { with: /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/ }, uniqueness: true
 
-  scope :confirmed, where('confirmed_at IS NOT NULL')
+  scope :confirmed, -> { where('confirmed_at IS NOT NULL') }
 
   has_secure_password
   before_create :generate_token
+
+  has_many :rooms
 
   def generate_token
     self.confirmation_token = SecureRandom.urlsafe_base64
