@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_authentication
-    return if user_signed_in?.nil? redirect_to new_user_sessions_path, alert: t('flash.alert.needs_login')
+    return redirect_to new_user_sessions_path, alert: t('flash.alert.needs_login') if user_signed_in?.nil? 
   end
 
   def require_no_authentication
