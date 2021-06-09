@@ -85,3 +85,23 @@ en:
     signin: Login
     my_profile: My profile
     signout: Logout
+
+  flash:
+    notice:
+      signed_in: 'Login successfully!'
+      signed_out: 'Logout successfully!'
+      room_created: 'Created successfully!'
+    alert:
+      needs_login: 'To continue, you must be logged in'
+
+  dialogs:
+    destroy: 'Are you sure you want to remove it?'
+
+  rooms:
+    index:
+      title: 'Available rooms'
+    
+    room:
+      owner_html: '&mdash; %{owner} (%{when})'
+      edit: 'Edit'
+      destroy: 'Remove'
