@@ -8,7 +8,8 @@ class User < ApplicationRecord
   has_secure_password
   before_create :generate_token
 
-  has_many :rooms
+  has_many :rooms, dependent: :destroy
+  has_many :reviews, dependent: :destroy
 
   def generate_token
     self.confirmation_token = SecureRandom.urlsafe_base64
