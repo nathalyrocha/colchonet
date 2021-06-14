@@ -8,12 +8,12 @@
   <br />
 
   <ul>
-    <li>Location: <%= @user.location %> </li><br />
+    <li>Location: <%= @user.location %> </li>
     <li>Bio: <%= @user.bio %> </li>
   </ul>
 
   <br />
 
-  <%= link_to 'Edit profile', edit_user_path(@user) %>
+  <%= link_to 'Edit profile', edit_user_path(@user), class: 'action-card-edit' %>
   <p class='back-button'><%= link_to 'Home', root_path, class: 'link-button' %></p>
 </div>
