@@ -1,20 +1,26 @@
 <article class="room">
-  <h2><%= link_to room.title, room %></h2>
+  <h2 class="card-title"><%= link_to highlight(room.title, @search_query), room.route %></h2>
+
+  <%= link_to(image_tag(room.thumb_url), room.picture_url) if room.has_picture? %>
+
+  <%= render partial: 'review', locals: {room: room} %>
+
   <span class="created">
     <%= t '.owner_html', owner: room.user.full_name, when: l(room.created_at, format: :short) %>
   </span>
 
-  <p>
+  <p class="card-location">
     <span class="location">
-      <%= link_to room.location, "https://maps.google.com/?q=#{room.location}", target: :blank %>
+      <%= link_to highlight(room.location, @search_query), "https://maps.google.com/?q=#{room.location}", target: :blank %>
     </span>
   </p>
 
-  <p><%= room.description %></p>
+  <p><%= highlight(room.description, @search_query) %></p>
+
   <% if belongs_to_user(room) %>
-    <ul>
-      <li><%= link_to t('.edit'), edit_room_path(room) %></li>
-      <li><%= link_to t('.destroy'), room_path(room), method: :delete, data: {confirm: t('dialogs.destroy')} %></li>
+    <ul class="action-card">
+      <li><%= link_to t('.edit'), edit_room_path(room.route), class: 'action-card-edit' %></li>
+      <li><%= link_to t('.destroy'), room_path(room.route), method: :delete, data: {confirm: t('dialogs.destroy')}, class: 'action-card-delete' %></li>
     </ul>
   <% end %>
 </article>
