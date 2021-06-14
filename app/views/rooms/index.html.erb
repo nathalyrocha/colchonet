@@ -1,4 +1,12 @@
-<h1><%= t '.title' %></h1>
-<% @rooms.each do |room|  %>
-  <%= render partial: 'room', object: room %>
-<% end %>
+<%= render 'search' %>
+
+<h1 id="register">
+  <% if @search_query.present? %>
+    <%= t '.search_results' %>
+  <% else %>
+    <%= t '.title' %>
+  <% end %>
+</h1>
+
+<%= render @rooms %>
+<%= paginate @rooms %>
