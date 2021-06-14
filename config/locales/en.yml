@@ -91,6 +91,7 @@ en:
       signed_in: 'Login successfully!'
       signed_out: 'Logout successfully!'
       room_created: 'Created successfully!'
+      room_updated: 'Update successfully!'
     alert:
       needs_login: 'To continue, you must be logged in'
 
@@ -100,8 +101,44 @@ en:
   rooms:
     index:
       title: 'Available rooms'
+      search_results: 'Search result'
+    search:
+      search_for: ' Search for...'
     
     room:
       owner_html: '&mdash; %{owner} (%{when})'
       edit: 'Edit'
       destroy: 'Remove'
+
+    review:
+      login_to_review: 'Login to rate rooms'
+      stats:
+        one: '(1 rate)'
+        other: '(%{count} rates)'
+
+  activerecord:
+    models:
+      room: Room
+      user: User
+      review: Rate
+    attributes:
+      user:
+        bio: Bio
+        email: Email
+        full_name: Full name
+        location: Location
+        password: Password
+        password_confirmation: Password confirmation
+      room:
+        description: Description
+        location: Location
+        title: Title
+        picture: Picture
+
+  views:
+    pagination:
+      first: '&laquo; First'
+      last: 'Last &raquo;'
+      previous: '&lsaquo; Previous'
+      next: 'Next &rsquo;'
+      truncate: '...'
