@@ -1,14 +1,24 @@
 class RoomsController < ApplicationController
   before_action :require_authentication, only: [:new, :edit, :create, :update, :destroy]
 
+  PER_PAGE = 10
+
   # GET /rooms or /rooms.json
   def index
-    @rooms = Room.all
+    @search_query = params[:q]
+    
+    rooms = Room.search(@search_query)
+
+    @rooms = Kaminari.paginate_array(RoomCollectionPresenter.new(rooms.all, self).to_ary).page(params[:page]).per(10)
   end
 
   # GET /rooms/1 or /rooms/1.json
   def show
-    set_room
+    room_model = Room.friendly.find(params[:id])
+
+    if user_signed_in?
+      @room = RoomPresenter.new(room_model, self)
+    end
   end
 
   # GET /rooms/new
@@ -18,7 +28,7 @@ class RoomsController < ApplicationController
 
   # GET /rooms/1/edit
   def edit
-    @room = current_user.rooms.find(params[:id])
+    @room = current_user.rooms.friendly.find(params[:id])
   end
 
   # POST /rooms or /rooms.json
@@ -34,16 +44,12 @@ class RoomsController < ApplicationController
 
   # PATCH/PUT /rooms/1 or /rooms/1.json
   def update
-    @room = current_user.room.find(params[:id])
-
-    respond_to do |format|  
-      if @room.update_attributes(params[:room])
-        format.html { redirect_to @room, notice: t('flash.notice.room_updated') }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @room.errors, status: :unprocessable_entity }
-      end
+    @room = current_user.rooms.friendly.find(params[:id])
+  
+    if @room.update(room_params)
+      redirect_to @room, notice: t('flash.notice.room_updated')
+    else
+      render action: 'edit'
     end
   end
 
@@ -63,6 +69,6 @@ class RoomsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def room_params
-      params.require(:room).permit(:title, :location, :description)
+      params.require(:room).permit(:title, :location, :description, :picture)
     end
 end
